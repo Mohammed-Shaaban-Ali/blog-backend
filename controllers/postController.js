@@ -162,7 +162,7 @@ module.exports.updatePostCtrl = asyncHandler(async (req, res) => {
     { new: true }
   ).populate("user", ["-password"]);
   //   send response
-  res.status(200).json({ updatedPost });
+  res.status(200).json(updatedPost);
 });
 
 /**--------------------------------
@@ -215,7 +215,7 @@ module.exports.updateImagePostCtrl = asyncHandler(async (req, res) => {
   );
 
   //   send response
-  res.status(200).json({ updatedImage });
+  res.status(200).json(updatedImage);
   //   remove the image from server
   fs.unlinkSync(imagePath);
 });
@@ -243,25 +243,23 @@ module.exports.toggelLikeCtrl = asyncHandler(async (req, res) => {
     post = await Post.findByIdAndUpdate(
       postId,
       {
-        $pull: {
-          linkes: loggedUser,
-        },
+        $pull: { linkes: loggedUser },
       },
-      { new: true }
+      {
+        new: true,
+      }
     );
   } else {
     post = await Post.findByIdAndUpdate(
       postId,
       {
-        $push: {
-          linkes: loggedUser,
-        },
+        $push: { linkes: loggedUser },
       },
       { new: true }
     );
   }
 
-  res.status(200).json({ post });
+  res.status(200).json(post);
 });
 
 /**--------------------------------

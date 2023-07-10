@@ -80,16 +80,22 @@ module.exports.updateComment = asyncHandler(async (req, res) => {
   }
 
   if (req.user.id !== comment.user.toString()) {
-    res.status(403).json({ message: "access denoed, only user himself" });
-  } else {
-    await Comment.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: {
-          text: req.body.text,
-        },
-      },
-      { new: true }
-    );
+    return res
+      .status(403)
+      .json({
+        message: "access denied, only user himself can edit his comment",
+      });
   }
+
+  const updatedComment = await Comment.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: {
+        text: req.body.text,
+      },
+    },
+    { new: true }
+  );
+
+  res.status(200).json(updatedComment);
 });

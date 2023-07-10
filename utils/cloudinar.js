@@ -14,7 +14,7 @@ const cloudinaryUploadImage = async (fileToUpload) => {
     });
     return date;
   } catch (error) {
-    return error;
+    throw new Error("Internal Server Error (cloudinary)");
   }
 };
 
@@ -24,7 +24,7 @@ const cloudinaryRemoveImage = async (imagePublicId) => {
     const result = await cloudinary.uploader.destroy(imagePublicId);
     return result;
   } catch (error) {
-    return error;
+    throw new Error("Internal Server Error (cloudinary)");
   }
 };
 
@@ -34,7 +34,7 @@ const cloudinaryRemoveAllImage = async (pubpliIds) => {
     const result = await cloudinary.v2.api.delete_all_resources(pubpliIds);
     return result;
   } catch (error) {
-    return error;
+    throw new Error("Internal Server Error (cloudinary)");
   }
 };
 
