@@ -26,6 +26,7 @@ app.use("/api/users", require("./routes/userroute"));
 app.use("/api/posts", require("./routes/postsroute"));
 app.use("/api/comments", require("./routes/commentroute"));
 app.use("/api/categorys", require("./routes/categoryroute"));
+app.use("/api/password", require("./routes/passwordroute"));
 
 // Error handlers
 app.use(notFund);
