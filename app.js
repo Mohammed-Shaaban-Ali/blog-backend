@@ -14,11 +14,7 @@ const app = express();
 app.use(express.json());
 
 // cors
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-  })
-);
+app.use(cors());
 
 // Route
 app.use("/api/auth", require("./routes/authroute"));
