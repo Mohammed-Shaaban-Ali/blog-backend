@@ -10,11 +10,11 @@ connectToDb();
 //Init App
 const app = express();
 
-// middleware
-app.use(express.json());
-
 // cors
 app.use(cors());
+
+// middleware
+app.use(express.json());
 
 // Route
 app.use("/api/auth", require("./routes/authroute"));
