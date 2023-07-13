@@ -4,8 +4,7 @@
   "description": "blog application",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "nodemon app.js"
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,8 +18,7 @@
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "4.1",
-    "mongoose": "^4.13.21",
-    "mongoose-auto-increment": "^5.0.1",
+    "mongoose": "^7.3.4",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.3"
   },
