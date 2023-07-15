@@ -19,7 +19,10 @@ const { Post } = require("../model/Post");
  * @access private (only admin)
 ------------------------------------*/
 module.exports.getAllUserCtrl = asyncHandler(async (req, res) => {
-  const users = await User.find().select("-password").populate("posts");
+  const users = await User.find()
+    .sort({ _id: -1 })
+    .select("-password")
+    .populate("posts");
   res.status(200).json(users);
 });
 
