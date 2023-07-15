@@ -38,7 +38,7 @@ module.exports.createComment = asyncHandler(async (req, res) => {
  * @access private (only logged in users or admin)
  -------------------------------- */
 module.exports.getAllComments = asyncHandler(async (req, res) => {
-  const comments = await Comment.find().populate("user");
+  const comments = await Comment.find().sort({ _id: -1 }).populate("user");
 
   res.status(200).json(comments);
 });
@@ -80,11 +80,9 @@ module.exports.updateComment = asyncHandler(async (req, res) => {
   }
 
   if (req.user.id !== comment.user.toString()) {
-    return res
-      .status(403)
-      .json({
-        message: "access denied, only user himself can edit his comment",
-      });
+    return res.status(403).json({
+      message: "access denied, only user himself can edit his comment",
+    });
   }
 
   const updatedComment = await Comment.findByIdAndUpdate(

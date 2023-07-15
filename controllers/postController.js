@@ -69,16 +69,14 @@ module.exports.GetAllPostCtrl = asyncHandler(async (req, res) => {
     posts = await Post.find()
       .skip((pageNumber - 1) * POST_PER_PAGE)
       .limit(POST_PER_PAGE)
-      .sort({ createAt: -1 })
+      .sort({ _id: -1 })
       .populate("user", ["-password"]);
   } else if (category) {
     posts = await Post.find({ category })
-      .sort({ createAt: -1 })
+      .sort({ _id: -1 })
       .populate("user", ["-password"]);
   } else {
-    posts = await Post.find()
-      .sort({ createAt: -1 })
-      .populate("user", ["-password"]);
+    posts = await Post.find().sort({ _id: -1 }).populate("user", ["-password"]);
   }
   res.status(200).json(posts);
 });
