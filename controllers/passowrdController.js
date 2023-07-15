@@ -35,7 +35,7 @@ module.exports.RestPasswordLike = asyncHandler(async (req, res) => {
   }
 
   // create like
-  const link = `${process.env.LINK}/reset-password/${user._id}/${verificationToken.token}`;
+  const link = `https://mohammed-blog.netlify.app/reset-password/${user._id}/${verificationToken.token}`;
 
   // create html template
   const htmlTemplate = `

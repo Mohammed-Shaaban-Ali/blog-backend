@@ -96,7 +96,7 @@ module.exports.loginUserCtrl = asyncHandler(async (req, res) => {
       await verificationToken.save();
     }
 
-    const link = `${process.env.LINK}/users/${user._id}/verify/${verificationToken.token}`;
+    const link = `https://mohammed-blog.netlify.app/users/${user._id}/verify/${verificationToken.token}`;
 
     const htmlTemplate = `
     <div>
@@ -145,9 +145,7 @@ module.exports.verifyUserAccount = asyncHandler(async (req, res) => {
 
   user.isAccountVerified = true;
   await user.save();
-  console.log("verificationToken : " + verificationToken);
   await VerificationToken.findByIdAndDelete(verificationToken._id);
-  console.log("verificationToken : " + verificationToken);
 
   res.status(200).json({ message: "Your account verified" });
 });

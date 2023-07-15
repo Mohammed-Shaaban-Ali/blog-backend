@@ -1,4 +1,3 @@
-const { models } = require("mongoose");
 const nodemailer = require("nodemailer");
 
 module.exports = async (userEmail, subject, htmlTemplate) => {
