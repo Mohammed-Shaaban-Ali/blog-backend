@@ -28,7 +28,7 @@ module.exports.createCategory = asyncHandler(async (req, res) => {
  * @access public
  -------------------------------- */
 module.exports.getAllCategory = asyncHandler(async (req, res) => {
-  const categorys = await Category.find();
+  const categorys = await Category.find().sort({ _id: -1 });
   res.status(200).json(categorys);
 });
 
