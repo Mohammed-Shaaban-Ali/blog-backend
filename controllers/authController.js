@@ -96,7 +96,7 @@ module.exports.loginUserCtrl = asyncHandler(async (req, res) => {
       await verificationToken.save();
     }
 
-    const link = `https://mohammed-blog.netlify.app/users/${user._id}/verify/${verificationToken.token}`;
+    const link = `https://blog-website1.web.app/users/${user._id}/verify/${verificationToken.token}`;
 
     const htmlTemplate = `
     <div>
